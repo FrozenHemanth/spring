@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomcat-users xmlns="http://tomcat.apache.org/xml"
+              xmlns:xsi="http://www.w3.org/2000/svg"
+              version="1.0">
+
+  <!-- Define the roles -->
+  <role rolename="admin"/>
+ 
+
+  <!-- Define your user -->
+  <user username="hemanth" password="123" roles="manager-gui,admin-gui"/>
+
+</tomcat-users>
