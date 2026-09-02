@@ -5,7 +5,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 public class FrozenWenInternet extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     public FrozenWenInternet() {
-        System.out.println("frozen web internet");
+        System.out.println("frozen web internet ...");
     }
     @Override
     protected Class<?>[] getRootConfigClasses() {
