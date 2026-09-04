@@ -6,6 +6,7 @@ public class FrozenWenInternet extends AbstractAnnotationConfigDispatcherServlet
 
     public FrozenWenInternet() {
         System.out.println("frozen web internet ...");
+        System.out.println("----------------------- ...");
     }
     @Override
     protected Class<?>[] getRootConfigClasses() {
