@@ -1,10 +1,6 @@
 package com.frozen.dto;
 import lombok.*;
-
-@Getter
-@Setter
-@AllArgsConstructor
-@ToString
+@Data
 public class UserFeedBackDTO {
     private String name;
     private String feedback;

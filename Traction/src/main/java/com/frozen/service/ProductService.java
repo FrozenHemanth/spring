@@ -1,5 +1,7 @@
 package com.frozen.service;
 
+import com.frozen.dto.ProductDTO;
+
 public interface ProductService {
-    public Boolean validateandSave();
+    public boolean validateandSave(ProductDTO productDTO);
 }

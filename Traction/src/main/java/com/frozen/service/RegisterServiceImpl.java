@@ -1,5 +1,8 @@
 package com.frozen.service;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class RegisterServiceImpl implements RegisterService {
 public RegisterServiceImpl() {
         System.out.println("RegisterServiceImpl object created.");

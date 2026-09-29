@@ -1,5 +1,8 @@
 package com.frozen.service;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class UserFeedBackImpl implements UserFeedBackService
 {
 public UserFeedBackImpl() {

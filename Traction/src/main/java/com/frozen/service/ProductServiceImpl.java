@@ -2,7 +2,9 @@ package com.frozen.service;
 
 import com.frozen.dto.ProductDTO;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+@Service
 @Component
 public class ProductServiceImpl implements ProductService {
 
@@ -11,7 +13,7 @@ public ProductServiceImpl() {
 }
 
     @Override
-    public Boolean validateandSave( ) {
-        return null;
+    public boolean validateandSave(ProductDTO productDTO ) {
+        return true;
     }
 }

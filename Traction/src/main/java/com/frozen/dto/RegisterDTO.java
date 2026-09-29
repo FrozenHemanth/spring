@@ -1,10 +1,7 @@
 package com.frozen.dto;
 import lombok.*;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@ToString
+@Data
 public class RegisterDTO {
     private String firstname;
     private String lastname;

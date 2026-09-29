@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.frozen.comp")
+@ComponentScan(basePackages = {"com.frozen.service","com.frozen.comp"})
 public class ApplicationConfiguration {
     public ApplicationConfiguration(){
         System.out.println("ApplicationConfiguration started.");
