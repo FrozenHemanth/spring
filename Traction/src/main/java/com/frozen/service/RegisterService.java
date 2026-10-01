@@ -1,5 +1,7 @@
 package com.frozen.service;
 
+import com.frozen.dto.RegisterDTO;
+
 public interface RegisterService {
-    public Boolean validateandSave();
+    public boolean validateandSave(RegisterDTO registerDTO);
 }

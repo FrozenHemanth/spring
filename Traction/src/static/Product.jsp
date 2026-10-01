@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
 <title>Product page</title>
@@ -7,13 +9,31 @@
 <form action="product">
 <pre>
     ProductName<input type="text" name="firstname">
+
     Price<input type="text" name="price">
+
     Description<input type="text" name="description">
     <input type="submit" value="Register">
 
-    <h1><span>${productMessage}</span></h1>
 
     </pre>
 </form>
+
+
+////
+    <style>
+        .invalid-feedback {
+            color: red;
+        }
+    </style>
+
+    <c:forEach items="${errors}" var="error">
+        <div class="invalid-feedback">
+            ${error.defaultMessage}
+        </div>
+    </c:forEach>
+
+////
+
 </body>
 </html>

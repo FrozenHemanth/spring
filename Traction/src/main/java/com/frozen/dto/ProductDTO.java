@@ -11,9 +11,9 @@ import javax.validation.constraints.Size;
 
 public class ProductDTO {
     @NotNull@Size(min = 3, max = 20, message = "Name must be between 3 and 20 characters")
-    private String name;
+    private String firstname;
     @NotNull
-    @Size@Min(value = 1, message = "Price must be greater than 0"   )
+    @Min(value = 1, message = "Price must be greater than 0"   )
     @Max(value = 1000000, message = "Price must be less than 1000000")
     private Double price;
     @NotNull
