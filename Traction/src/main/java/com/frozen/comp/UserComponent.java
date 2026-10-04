@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/")
@@ -22,22 +22,31 @@ public class UserComponent {
         System.out.println("UserComponent created.");
     }
 
-    @RequestMapping(value = "/user", method = {RequestMethod.GET, RequestMethod.POST})
-    public String onClick(@ModelAttribute("userDTO") @Valid UserDTO userDTO,
-                          BindingResult bindingResult,
-                          Model model) {
-        System.out.println("UserComponent onClick() method called.");
+    @PostMapping("/user")
+    public String user(@Valid UserDTO userDTO,
+                       BindingResult bindingResult,
+                       Model model) {
+        System.out.println("UserComponent user() method called.");
         System.out.println("userDTO = " + userDTO);
-
         if (bindingResult.hasErrors()) {
-            bindingResult.getAllErrors().forEach(error ->
-                    System.out.println("Validation error: " + error.getDefaultMessage()));
-            model.addAttribute("userMessage", "Invalid user data");
-            return "user.jsp";
-        }
+            System.out.println("Validation errors found:");
 
-        model.addAttribute("userMessage", "User registered successfully " + userDTO);
-        userService.validateandSave();
+            List<ObjectError> errors = bindingResult.getAllErrors();
+            model.addAttribute("errors", errors);
+            model.addAttribute("userMessage", userDTO);
+        }
+        else {
+            System.out.println("Validation passed. Proceeding to save the user.");
+        }
         return "user.jsp";
     }
+    @GetMapping("/user")
+    public String userGet() {
+        System.out.println("UserComponent user() method called for GET request.");
+        System.out.println("Returning user.jsp view.");
+
+
+        return "user.jsp";
+    }
+
 }

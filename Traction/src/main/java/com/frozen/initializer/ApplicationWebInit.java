@@ -1,6 +1,7 @@
 package com.frozen.initializer;
 
 import com.frozen.config.ApplicationConfiguration;
+import com.frozen.config.WebConfgarator;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class ApplicationWebInit extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -11,18 +12,18 @@ public class ApplicationWebInit extends AbstractAnnotationConfigDispatcherServle
     @Override
     protected Class<?>[] getRootConfigClasses() {
         System.out.println("Running getRootConfigClasses().");
-        return new Class[]{ApplicationConfiguration.class};
+        return new Class[]{ApplicationConfiguration.class,WebConfgarator.class};
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
         System.out.println("Running getServletConfigClasses().");
-        return new Class[0] ;
+        return new Class[]{};
     }
 
     @Override
     protected String[] getServletMappings() {
         System.out.println("Running getServletMappings().");
-        return new String[] {"/click" , "/register","/product","/feedback"};
+        return new String[] {"/"};
     }
 }
