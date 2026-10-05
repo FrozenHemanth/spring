@@ -41,9 +41,13 @@ public class ProductComponent {
         return "Product.jsp";
     }
     @GetMapping("/product")
-    public String productGet() {
+    public String productGet(@Valid ProductDTO productDTO,
+                             BindingResult bindingResult,
+                             Model model) {
         System.out.println("ProductComponent product() method called for GET request.");
-
+//        List<ObjectError> errors = bindingResult.getAllErrors();
+//        model.addAttribute("errors", errors);
+//        model.addAttribute("productMessage", productDTO);
         return "Product.jsp";
     }
 

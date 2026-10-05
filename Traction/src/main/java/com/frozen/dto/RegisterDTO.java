@@ -19,7 +19,7 @@ public class RegisterDTO {
     @Email(message = "Invalid email")
     private String email;
     @NotNull
-    @Size(min = 2, max = 10, message = "What's your SNO must be between 2 and 10 characters")
+    @Size(min = 2, max = 10, message = "Whats up NO must be between 2 and 10 characters")
     private String watsno;
 
 

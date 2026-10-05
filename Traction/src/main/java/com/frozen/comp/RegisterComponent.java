@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/")
@@ -22,22 +22,32 @@ public class RegisterComponent {
         System.out.println("RegisterComponent created.");
     }
 
-    @RequestMapping(value = "/register", method = {RequestMethod.GET, RequestMethod.POST})
-    public String register(@ModelAttribute("registerDTO") @Valid RegisterDTO registerDTO,
-                           BindingResult bindingResult,
-                           Model model) {
+    @PostMapping("/register")
+    public String register(@Valid RegisterDTO registerDTO,
+                          BindingResult bindingResult,
+                          Model model) {
         System.out.println("RegisterComponent register() method called.");
         System.out.println("registerDTO = " + registerDTO);
-
         if (bindingResult.hasErrors()) {
-            bindingResult.getAllErrors().forEach(error ->
-                    System.out.println("Validation error: " + error.getDefaultMessage()));
-            model.addAttribute("registerMessage", "Invalid register data");
-            return "Register.jsp";
-        }
+            System.out.println("Validation errors found:");
 
-        registerService.validateandSave(registerDTO);
-        model.addAttribute("registerMessage", "Register successful");
+            List<ObjectError> errors = bindingResult.getAllErrors();
+            model.addAttribute("errors", errors);
+            model.addAttribute("registerDTO", registerDTO);
+        }
+        else {
+            System.out.println("Validation passed. Proceeding to save the registration.");
+            registerService.validateandSave(registerDTO);
+        }
         return "Register.jsp";
     }
+    @GetMapping("/register")
+    public String registerGet(@Valid RegisterDTO registerDTO,
+                             BindingResult bindingResult,
+                             Model model) {
+        System.out.println("RegisterComponent register() method called for GET request.");
+        return "Register.jsp";
+    }
+
 }
+
