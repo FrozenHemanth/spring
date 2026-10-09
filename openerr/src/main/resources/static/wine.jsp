@@ -9,7 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: url('wine.jpg') no-repeat center center fixed;
+            background-size: cover;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -17,7 +18,7 @@
             padding: 20px;
         }
         .form-container {
-            background: white;
+            background: rgba(255, 255, 255, 0.85);
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
             padding: 40px;
@@ -78,7 +79,7 @@
 </head>
 <body>
     <div class="form-container">
-        <h1 class="form-title">🍷 Wine Application</h1>
+        <h1 class="form-title">: Wine Application</h1>
 
 
 
