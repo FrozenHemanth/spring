@@ -19,28 +19,31 @@
         }
         .form-container {
             background: rgba(255, 255, 255, 0.85);
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            padding: 40px;
-            max-width: 600px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 700px;
             width: 100%;
         }
         .form-title {
             text-align: center;
             color: #333;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
             font-weight: 700;
+            font-size: 1.5rem;
         }
         .form-label {
             font-weight: 600;
             color: #555;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
+            font-size: 0.9rem;
         }
         .form-control {
-            border-radius: 10px;
-            padding: 12px 15px;
+            border-radius: 8px;
+            padding: 8px 12px;
             border: 2px solid #e0e0e0;
             transition: all 0.3s ease;
+            font-size: 0.9rem;
         }
         .form-control:focus {
             border-color: #667eea;
@@ -52,77 +55,101 @@
         }
         .invalid-feedback {
             color: #dc3545;
-            font-size: 0.875rem;
-            margin-top: 5px;
+            font-size: 0.75rem;
+            margin-top: 2px;
             display: block;
         }
         .btn-submit {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border: none;
-            border-radius: 10px;
-            padding: 12px 30px;
+            border-radius: 8px;
+            padding: 10px 25px;
             color: white;
             font-weight: 600;
             width: 100%;
-            margin-top: 20px;
+            margin-top: 15px;
             transition: transform 0.3s ease;
         }
         .btn-submit:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
         }
-        .alert-success {
-            border-radius: 10px;
-            margin-top: 20px;
+        .show-all-link {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .show-all-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 8px 20px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .show-all-link a:hover {
+            background: #667eea;
+            color: white;
+        }
+        .form-row {
+            margin-bottom: 8px;
         }
     </style>
 </head>
 <body>
-    <div class="form-container">
-        <h1 class="form-title">: Wine Application</h1>
+<div class="form-container">
+    <h1 class="form-title">Fill Wine(C2-H5-OH) Details</h1>
 
-
-
-        <form:form action="wine" method="post" modelAttribute="winemessage">
-            <div class="mb-3">
+    <form:form action="wine" method="post" modelAttribute="winemessage">
+        <div class="row form-row">
+            <div class="col-md-6">
                 <label for="companyName" class="form-label">Company Name</label>
                 <form:input type="text" path="companyName" class="form-control" id="companyName" placeholder="Enter company name" cssErrorClass="form-control is-invalid" />
                 <form:errors path="companyName" class="invalid-feedback" />
             </div>
-
-            <div class="mb-3">
-                <label for="companyAddress" class="form-label">Company Address</label>
-                <form:input type="text" path="companyAddress" class="form-control" id="companyAddress" placeholder="Enter company address" cssErrorClass="form-control is-invalid" />
-                <form:errors path="companyAddress" class="invalid-feedback" />
-            </div>
-
-            <div class="mb-3">
+            <div class="col-md-6">
                 <label for="manufacturerName" class="form-label">Manufacturer Name</label>
                 <form:input type="text" path="manufacturerName" class="form-control" id="manufacturerName" placeholder="Enter manufacturer name" cssErrorClass="form-control is-invalid" />
                 <form:errors path="manufacturerName" class="invalid-feedback" />
             </div>
+        </div>
 
-            <div class="mb-3">
+        <div class="row form-row">
+            <div class="col-md-6">
+                <label for="companyAddress" class="form-label">Company Address</label>
+                <form:input type="text" path="companyAddress" class="form-control" id="companyAddress" placeholder="Enter company address" cssErrorClass="form-control is-invalid" />
+                <form:errors path="companyAddress" class="invalid-feedback" />
+            </div>
+            <div class="col-md-6">
                 <label for="manufactureDate" class="form-label">Manufacture Date</label>
                 <form:input type="date" path="manufactureDate" class="form-control" id="manufactureDate" cssErrorClass="form-control is-invalid" />
                 <form:errors path="manufactureDate" class="invalid-feedback" />
             </div>
+        </div>
 
-            <div class="mb-3">
+        <div class="row form-row">
+            <div class="col-md-6">
                 <label for="age" class="form-label">Age</label>
                 <form:input type="number" path="age" class="form-control" id="age" placeholder="Enter age" cssErrorClass="form-control is-invalid" />
                 <form:errors path="age" class="invalid-feedback" />
             </div>
-
-            <div class="mb-3">
+            <div class="col-md-6">
                 <label for="price" class="form-label">Price</label>
                 <form:input type="number" path="price" step="0.01" class="form-control" id="price" placeholder="Enter price" cssErrorClass="form-control is-invalid" />
                 <form:errors path="price" class="invalid-feedback" />
             </div>
+        </div>
 
-            <button type="submit" class="btn btn-submit">Submit</button>
-        </form:form>
+        <button type="submit" class="btn btn-submit">Submit</button>
+    </form:form>
+
+
+
+    <div class="show-all-link">
+        <a href="showAll">Show All Wines</a>
     </div>
+</div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

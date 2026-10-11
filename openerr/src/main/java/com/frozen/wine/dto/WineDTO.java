@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -30,7 +31,7 @@ public class WineDTO implements Serializable {
     @NotNull(message = "Manufacture date cannot be null")
     @PastOrPresent(message = "Manufacture date must be in the past or present")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date manufactureDate;
+    private LocalDate manufactureDate;
 
     @NotNull(message = "Age cannot be null")
     private int age;

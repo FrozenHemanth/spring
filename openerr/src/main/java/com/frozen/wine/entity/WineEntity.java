@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
@@ -14,7 +15,8 @@ import java.time.LocalDate;
 @Setter
 @ToString
 @Table(name = "wine")
-public class WineEntity {
+@NamedQuery(name = "WineEntity.findAll", query = "FROM WineEntity w")
+public class WineEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

@@ -39,7 +39,6 @@ public class WineComponent {
             System.out.println("Data saved: " + saved);
         }
         model.addAttribute("winemessage", wineDTO);
-        model.addAttribute("bindingResult", bindingResult);
         return "wine.jsp";
     }
     @GetMapping("/opener")
@@ -48,6 +47,13 @@ public class WineComponent {
 
         model.addAttribute("winemessage", new WineDTO());
         return "wine.jsp";
+    }
+    @GetMapping("/showAll")
+        public String showAll(Model model) {
+        System.out.println("showAll() method called for GET request.");
+        List<WineDTO> wineDTOs = wineService.findAll();
+        model.addAttribute("WineDTOsList",wineDTOs);
+        return "winedisplay.jsp";
     }
 }
 
