@@ -16,6 +16,7 @@ import java.util.Date;
 @Getter
 @Setter
 public class WineDTO implements Serializable {
+    private int id;
     @NotBlank(message = "Company name cannot be blank")
     @Size(min = 3, max = 100, message = "Company name must be between 3 and 100 characters")
     private String companyName;
@@ -37,7 +38,7 @@ public class WineDTO implements Serializable {
     private int age;
 
     @NotNull(message = "Price cannot be null")
-    @Min(value = 0, message = "Price must be at least 0")
+    @Min(value = 1, message = "Price must be at least 0")
     @Max(value = 1000000, message = "Price must be at most 1000000")
     private double price;
 }

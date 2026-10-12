@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -53,6 +54,26 @@ public class WineServiceImpl implements WineService {
 
             return java.util.Collections.emptyList();
         }
+
+    }
+
+    @Override
+    public WineDTO findById(int id) {
+        System.out.println("findById() method called in WineServiceImpl for id: " + id);
+        if (id > 0) {
+            System.out.println("Valid id provided: " + id);
+            Optional<WineEntity> optionalWineEntity = wineRepository.findById(id);
+            if (optionalWineEntity.isPresent()) {
+                System.out.println("Wine entity found for id: " + id);
+                WineEntity wineEntity = optionalWineEntity.get();
+                WineDTO wineDTO = new WineDTO();
+                BeanUtils.copyProperties(wineEntity, wineDTO);
+                return wineDTO;
+            } else {
+                System.out.println("No wine entity found for id: " + id);
+            }
+        }
+        return null;
     }
 }
 

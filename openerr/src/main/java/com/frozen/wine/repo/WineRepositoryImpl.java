@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Transactional
 @Repository
@@ -33,5 +34,18 @@ public class WineRepositoryImpl implements WineRepository {
                 .getResultList();
         System.out.println("Found " + wineEntitieslist.size() + " wine entities.");
         return wineEntitieslist;
+    }
+
+    @Override
+    public Optional<WineEntity> findById(int id) {
+        System.out.println("Running findById in WineRepositoryImpl for id: " + id);
+        WineEntity wineEntity = entityManager.find(WineEntity.class, id);
+        if (wineEntity != null) {
+            System.out.println("Found wine entity: " + wineEntity.toString());
+            return Optional.of(wineEntity);
+        }
+        System.out.println("No wine entity found for id: " + id);
+
+        return Optional.empty();
     }
 }

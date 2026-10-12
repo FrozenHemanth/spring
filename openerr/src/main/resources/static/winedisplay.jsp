@@ -19,6 +19,8 @@
 <td>${wineDTO.manufactureDate}</td>
 <td>${wineDTO.age}</td>
 <td>${wineDTO.price}</td>
+<td><a href="editwine?id=${wineDTO.id}">Edit</a></td>
+<td><a href="delete?id=${wineDTO.id}">Delete</a></td>
 </tr>
 </c:forEach>
 </table>
