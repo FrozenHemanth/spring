@@ -13,8 +13,7 @@ import java.util.Date;
 
 @Data
 @ToString
-@Getter
-@Setter
+
 public class WineDTO implements Serializable {
     private int id;
     @NotBlank(message = "Company name cannot be blank")
