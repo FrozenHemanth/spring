@@ -98,6 +98,8 @@
     </style>
 </head>
 <body>
+<input type="text" disabled value="${wineDTO.id}">
+    <input type="hidden" name="id" value="${winemessage.id}">
 <div class="form-container">
     <h1 class="form-title">Fill Wine(C2-H5-OH) Details</h1>
 

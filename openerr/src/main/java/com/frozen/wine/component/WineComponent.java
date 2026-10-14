@@ -66,5 +66,21 @@ public class WineComponent {
         }
         return "wine.jsp";
     }
+    @PostMapping("/updatewine")
+    public String updateWine(Model model, @Valid WineDTO wineDTO, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            System.out.println("validation failed or has errors fix it");
+            List<ObjectError> errors = bindingResult.getAllErrors();
+            model.addAttribute("errors", bindingResult.getAllErrors());
+            System.out.println("Errors: " + errors);
+            model.addAttribute("winemessage", wineDTO);
+        } else {
+            System.out.println("validation passed");
+            boolean saved = wineService.saveAndValidate(wineDTO);
+            System.out.println("Data saved: " + saved);
+        }
+        model.addAttribute("winemessage", wineDTO);
+        return "wine.jsp";
+    }
 }
 
