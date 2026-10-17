@@ -103,7 +103,10 @@
 <div class="form-container">
     <h1 class="form-title">Fill Wine(C2-H5-OH) Details</h1>
 
-    <form:form action="wine" method="post" modelAttribute="winemessage">
+    <form:form action="${not empty winemessage.id ? 'updatewine' : 'wine'}" method="post" modelAttribute="winemessage">
+        <c:if test="${not empty winemessage.id}">
+            <form:input type="hidden" path="id" />
+        </c:if>
         <div class="row form-row">
             <div class="col-md-6">
                 <label for="companyName" class="form-label">Company Name</label>

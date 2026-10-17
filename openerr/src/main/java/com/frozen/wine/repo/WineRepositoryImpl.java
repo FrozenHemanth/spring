@@ -23,13 +23,13 @@ public class WineRepositoryImpl implements WineRepository {
     public boolean save(WineEntity wineEntity) {
         System.out.println("Running save in WineRepositoryImpl");
         System.out.println("WineEntity details: " + wineEntity.toString());
-        entityManager.persist(wineEntity);
+        entityManager.merge(wineEntity);
         return true;
     }
     @Override
     public List<WineEntity> findAll() {
         System.out.println("Running findAll in WineRepositoryImpl");
-        List<WineEntity> wineEntitieslist = entityManager
+        List<WineEntity> wineEntitieslist = this.entityManager
                 .createNamedQuery("WineEntity.findAll", WineEntity.class)
                 .getResultList();
         System.out.println("Found " + wineEntitieslist.size() + " wine entities.");
@@ -39,10 +39,10 @@ public class WineRepositoryImpl implements WineRepository {
     @Override
     public Optional<WineEntity> findById(int id) {
         System.out.println("Running findById in WineRepositoryImpl for id: " + id);
-        WineEntity wineEntity = entityManager.find(WineEntity.class, id);
+        WineEntity wineEntity = this.entityManager.find(WineEntity.class, id);
         if (wineEntity != null) {
             System.out.println("Found wine entity: " + wineEntity.toString());
-            return Optional.of(wineEntity);
+            return Optional.ofNullable(wineEntity);
         }
         System.out.println("No wine entity found for id: " + id);
 
