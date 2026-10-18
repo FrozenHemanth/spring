@@ -59,12 +59,12 @@ public class WineServiceImpl implements WineService {
 
     @Override
     public WineDTO findById(int id) {
-        System.out.println("findById() method called in WineServiceImpl for id: " + id);
+        System.out.println("findById() method called in WineServiceImpl for id number: " + id);
         if (id > 0) {
             System.out.println("Valid id provided: " + id);
             Optional<WineEntity> optionalWineEntity = wineRepository.findById(id);
             if (optionalWineEntity.isPresent()) {
-                System.out.println("Wine entity found for id: " + id);
+                System.out.println("Wine entity found for id number: " + id);
                 WineEntity wineEntity = optionalWineEntity.get();
                 WineDTO wineDTO = new WineDTO();
                 BeanUtils.copyProperties(wineEntity, wineDTO);
