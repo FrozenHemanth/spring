@@ -1,0 +1,26 @@
+package com.frozen.inventrymanagement.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+@Configuration
+@EnableWebMvc
+@ComponentScan("com.frozen.inventrymanagement")
+public class ApplicationConfiguration {
+
+    public ApplicationConfiguration(){
+        System.out.println("The ApplicationConfiguration is created");
+    }
+
+    @Bean
+    public InternalResourceViewResolver viewResolver() {
+        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+        viewResolver.setPrefix("/static/");
+        viewResolver.setSuffix(".jsp");
+        return viewResolver;
+    }
+
+}
