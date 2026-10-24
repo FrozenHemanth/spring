@@ -18,6 +18,11 @@ public class RegisterController {
         System.out.println("The RegisterController is created");
     }
 
+    @GetMapping
+    public String home(){
+        return "index";
+    }
+
     @GetMapping("Register")
     public String openRegister(){
         return "Register";
@@ -25,7 +30,7 @@ public class RegisterController {
 
     @PostMapping("register")
     public String register(Model model, @Valid RegisterDTO registerDTO, BindingResult bindingResult){
-        System.out.println("The ");
+        System.out.println("The register method is called ");
         return "Register";
     }
 }

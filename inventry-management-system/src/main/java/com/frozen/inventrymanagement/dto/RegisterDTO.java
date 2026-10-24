@@ -1,8 +1,10 @@
 package com.frozen.inventrymanagement.dto;
 
 
-import javax.validation.constraints.*;
+import lombok.Data;
 
+import javax.validation.constraints.*;
+@Data
 public class RegisterDTO {
     @NotBlank
     @Size(min = 3,max = 10,message = "The name should be 3 to 10 character")
